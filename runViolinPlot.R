@@ -2,12 +2,12 @@
 #' @return a shiny app
 #'
 #' @export
-runFutureApp <- function() {
+runViolinApp <- function() {
 
-  ui <- mainModuleUI_violinPlot("main_module")
+  ui <- violinPlotUI("violinPlot")
 
   server <- function(input, output, session){
-    callModule(mainModule_violinPlot, "main_module")
+    callModule(violinPlot, "violinPlot")
   }
 
   shiny::shinyApp(ui = ui, server = server)

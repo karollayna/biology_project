@@ -2,12 +2,12 @@
 #' @return a shiny app
 #'
 #' @export
-runFutureApp <- function() {
+runSurvivalApp <- function() {
 
-  ui <- mainModuleUI_survivalPlot("main_module")
+  ui <- survivalPlotUI("survivalPlot")
 
   server <- function(input, output, session){
-    callModule(mainModule_survivalPlot, "main_module")
+    callModule(survivalPlot, "survivalPlot")
   }
 
   shiny::shinyApp(ui = ui, server = server)

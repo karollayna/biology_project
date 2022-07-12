@@ -12,7 +12,7 @@ library(shinyWidgets)
 
 #'
 #' @export
-mainModuleUI_violinPlot <- function(id){
+violinPlotUI <- function(id){
 
   ns <- NS(id)
 
@@ -47,9 +47,9 @@ mainModuleUI_violinPlot <- function(id){
 #' @param session shiny session
 #'
 #' @export
-mainModule_violinPlot <- function(input, output, session){
+violinPlot <- function(input, output, session){
 
-  attachNamespace("MultiAssayExperiment")
+  loadNamespace("MultiAssayExperiment")
   data("miniACC")
 
   # define suported assays

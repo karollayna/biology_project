@@ -8,7 +8,7 @@
 #' @import shinyWidgets
 #'
 #' @export
-mainModuleUI_scatterPlot <- function(id){
+scatterPlotUI <- function(id){
 
   ns <- NS(id)
 
@@ -44,9 +44,9 @@ mainModuleUI_scatterPlot <- function(id){
 #' @param session shiny session
 #'
 #' @export
-mainModule_scatterPlot <- function(input, output, session){
+scatterPlot <- function(input, output, session){
 
-  attachNamespace("MultiAssayExperiment")
+  loadNamespace("MultiAssayExperiment")
   data("miniACC")
 
   #add assays to choose

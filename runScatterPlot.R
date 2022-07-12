@@ -2,12 +2,12 @@
 #' @return a shiny app
 #'
 #' @export
-runFutureApp <- function() {
+runScatterApp <- function() {
 
-  ui <- mainModuleUI_scatterPlot("main_module")
+  ui <- scatterPlotUI("scatterPlot")
 
   server <- function(input, output, session){
-    callModule(mainModule_scatterPlot, "main_module")
+    callModule(scatterPlot, "scatterPlot")
   }
 
   shiny::shinyApp(ui = ui, server = server)

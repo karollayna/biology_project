@@ -11,7 +11,7 @@ library(shinyWidgets)
 
 #'
 #' @export
-mainModuleUI_survivalPlot <- function(id){
+survivalPlotUI <- function(id){
 
   ns <- NS(id)
 
@@ -34,7 +34,7 @@ mainModuleUI_survivalPlot <- function(id){
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput(outputId = ns("distPlot"))
+      plotOutput(outputId = ns("survival_plot"))
     )
   )
 }
@@ -49,7 +49,7 @@ mainModuleUI_survivalPlot <- function(id){
 #' @param session shiny session
 #'
 #' @export
-mainModule_survivalPlot <- function(input, output, session){
+survivalPlot <- function(input, output, session){
 
   loadNamespace("MultiAssayExperiment")
   data("miniACC")
@@ -158,7 +158,7 @@ mainModule_survivalPlot <- function(input, output, session){
   })
 
   #create survival plot
-  output$distPlot <- renderPlot({
+  output$survival_plot <- renderPlot({
     req(input$select)
     req(input$filters)
     req(input$additional_filters01)
