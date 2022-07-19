@@ -23,7 +23,7 @@ survivalPlotUI <- function(id){
   sidebarLayout(
     sidebarPanel(
       selectInput(inputId = ns("select"),
-                  label = "Select box",
+                  label = "Select filter",
                   choices = ""
                   ),
       shinyWidgets::actionBttn(inputId = ns("add_filters"),
@@ -58,7 +58,7 @@ survivalPlot <- function(input, output, session){
     updateSelectInput(
       session = session,
       inputId = "select",
-      label = "Select box",
+      label = "Select filter",
       choices = as.list(BiocGenerics::colnames(SummarizedExperiment::colData(miniACC))),
       selected = ""
     )
@@ -159,9 +159,14 @@ survivalPlot <- function(input, output, session){
 
   #create survival plot
   output$survival_plot <- renderPlot({
-    req(input$select)
-    req(input$filters)
-    req(input$additional_filters01)
+    validate(
+      need(input$select,
+           message = "Choose filter"),
+      need(input$filters,
+           message = "Add additional filter"),
+      need(input$additional_filters01,
+           message = "Choose additional filter to create a plot")
+    )
 
     coldat <- data()
 
